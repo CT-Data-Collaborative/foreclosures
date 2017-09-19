@@ -43,7 +43,7 @@
           "constraints": {
             "enum": [
               "Lis Penden Filings", 
-              "Total foreclosures"
+              "Total Foreclosures"
             ]
          }
         }, {          
@@ -148,13 +148,74 @@
         "Percent": "%"
       }
     },
-    "default": {}
+    "expected_number_of_geographies": {
+      "ckan_name": "Expected Number of Unique Geographies",
+      "value": 170,
+      "type": "string"
+    },     
+    "default": {      
+      "ckan_name": "Default",
+      "value": {
+        "Town": "Connecticut",
+        "Year": ["2016"],
+        "Measure Type": "Number", 
+        "Variable": "Foreclosures"
+      },
+      "type": "object"
+    } 
   },
-  "spot_checks": [],
+  "spot_checks": [
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Connecticut",
+        "Year":	"2015",
+        "Variable":	"Foreclosures",
+        "Measure Type":	"Number",
+        "Foreclosure": "Lis Penden Filings"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 16446
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Trumbull",
+        "Year":	"2013",
+        "Variable":	"Foreclosures",
+        "Measure Type":	"Number",
+        "Foreclosure": "Total Foreclosures"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 20
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Easton",
+        "Year":	"2014",
+        "Variable":	"Foreclosures",
+        "Measure Type":	"Number",
+        "Foreclosure": "Lis Penden Filings"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "int",
+        "value": 16
+      } 
+    }     
+  ],
   "dimension_groups": [
     {
-      "Measure Type": [],
-      "Variable": []
+      "Foreclosure": ["Lis Penden Filings", "Total Foreclosures"],
+      "Measure Type": ["Number"], 
+      "Variable": ["Foreclosures"]     
     }
   ]
 }

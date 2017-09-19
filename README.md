@@ -1,7 +1,8 @@
 Foreclosures
 
-[![Build Status](https://travis-ci.org/CT-Data-Collaborative/foreclosures.svg?branch=master)](https://travis-ci.org/CT-Data-Collaborative/foreclosures)
 Foreclosures reports the number of pending filings and foreclosures.
+
+Data Source : <http://www.chfa.org/Press%20Room/CHFA%20Research%20Data/default.aspx>
 
 ## License MIT
 
