@@ -21,7 +21,7 @@
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/data.csv",
+    "path": "data/foreclosures_2016.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -177,7 +177,7 @@
       "expected": {
         "type": "$match",
         "number type": "int",
-        "value": 16446
+        "value": 11913
       } 
     }, 
     {
